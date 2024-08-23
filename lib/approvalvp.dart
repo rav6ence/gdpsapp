@@ -73,20 +73,20 @@ class ApprovalReport extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                        color: Color(0xFF0159B2),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.black.withOpacity(0.35),
-                          width: 3,
+                      color: Color(0xFF0159B2),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: Colors.black.withOpacity(0.35),
+                        width: 3,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: Offset(0, 6),
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            spreadRadius: 1,
-                            blurRadius: 3,
-                            offset: Offset(0, 6),
-                          )
-                        ]
+                      ],
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),

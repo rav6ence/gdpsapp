@@ -3,6 +3,7 @@ import 'dailychecklist.dart';
 import 'approval.dart';
 import 'mastercleaningprogram.dart';
 import 'pwcc.dart';
+import 'report.dart';
 
 void main() => runApp(MyApp());
 
@@ -162,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _buildDashboardItem('Housekeeping'),
               SizedBox(height: 14),
               _buildEngineerItem('Engineer'),
-              SizedBox(height: 30),
+              SizedBox(height: 16),
               Container(
                 width: 370,
                 child: Text(
@@ -226,7 +227,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontSize: 12,
                           ),
                         ),
-                        //_buildDatePicker(context),
                         Container(
                           padding: EdgeInsets.only(right: 2, left: 10, top: 2, bottom: 2),
                           decoration: BoxDecoration(
@@ -286,21 +286,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // qr code
-        },
-        label: Icon(
-          Icons.qr_code_scanner,
-          size: 40,
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(
-            color: Color(0xff00A787),
-            width: 5.0,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(top: 20.0),
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            // qr code
+          },
+          label: Icon(
+            Icons.qr_code_scanner,
+            size: 30,
+          ),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(
+              color: Color(0xff00809C),
+              width: 5.0,
+            ),
           ),
         ),
       ),
@@ -331,7 +334,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildNavBarItem(Icons.home_outlined, 'Home', 0),
                 _buildNavBarItem(Icons.history_outlined, 'History', 1),
                 SizedBox(width: 60),
-                _buildNavBarItem(Icons.report_outlined, 'Report', 2),
+                _buildNavBarReportItem(Icons.report_outlined, 'Report', 2),
                 _buildNavBarItem(Icons.person, 'User', 3),
               ],
             ),
@@ -340,6 +343,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
   Widget _buildProfileCard() {
     return Padding(
       padding: const EdgeInsets.only(right: 60), // Shift the container 100px to the right
@@ -424,11 +428,6 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 200,
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                /*gradient: LinearGradient(
-                  colors: [Color(0xff1BC19F), Color(0xff009476)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),*/
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
@@ -487,7 +486,7 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: const EdgeInsets.only(bottom: 0.0), // Adjust the top padding to move the button up
       child: ElevatedButton(
         onPressed: () {
-        // Handle button press
+          // Handle button press
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color(0xff2A3D6D),
@@ -500,7 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 5,
         ),
         child: Text(title, style: TextStyle(fontSize: 12)),
-        ),
+      ),
     );
   }
 
@@ -537,7 +536,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       padding: EdgeInsets.all(10),
       width: 375,
-      height: 130,
+      height: 140,
       decoration: BoxDecoration(
         color: Color(0xff313564),
         borderRadius: BorderRadius.circular(20),
@@ -561,7 +560,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text(
               'Housekeeping',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -571,11 +570,11 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildDailyChecklistButton('Daily Checklist', Icons.checklist_outlined, context),
-              _buildApprovalButton('Approval', Icons.check_circle_outline, context),
-              _buildMCPButton('MCP', Icons.computer, context),
-              _buildPWCCButton('PWCC', Icons.checklist, context),
-              _buildDashboardItemButton('HK Service', Icons.settings),
+              _buildDailyChecklistButton('Daily\nChecklist', Icons.checklist_outlined, context),
+              _buildApprovalButton('Approval\n', Icons.check_circle_outline, context),
+              _buildMCPButton('MCP\n', Icons.computer, context),
+              _buildPWCCButton('PWCC\n', Icons.checklist, context),
+              _buildDashboardItemButton('HK Service\n', Icons.settings),
             ],
           ),
         ],
@@ -583,10 +582,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildDailyChecklistButton(String title, IconData icon, BuildContext context) {
+  Widget _buildDailyChecklistButton(String label, IconData icon, BuildContext context) {
     return InkWell(
       onTap: () {
-        if (title == 'Daily Checklist') {
+        if (label == 'Daily Checklist') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => DailyChecklistScreen()),
@@ -611,9 +610,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SizedBox(height: 5),
           Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xffD7D7D7),
               fontSize: 10,
             ),
           ),
@@ -652,7 +652,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xffD7D7D7),
               fontSize: 10,
             ),
           ),
@@ -691,7 +691,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xffD7D7D7),
               fontSize: 10,
             ),
           ),
@@ -730,7 +730,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xffD7D7D7),
               fontSize: 10,
             ),
           ),
@@ -743,7 +743,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       padding: EdgeInsets.all(10),
       width: 375,
-      height: 130,
+      height: 140,
       decoration: BoxDecoration(
         color: Color(0xff22C3A4),
         borderRadius: BorderRadius.circular(20),
@@ -767,7 +767,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text(
               'Engineer',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -777,9 +777,9 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildDashboardItemButton('Inventory Maintenance', Icons.checklist),
-              _buildDashboardItemButton('Maintenance Services', Icons.check_circle),
-              _buildDashboardItemButton('Maintenance Schedule', Icons.computer),
+              _buildDashboardItemButton('Inventory\nMaintenance', Icons.checklist),
+              _buildDashboardItemButton('Maintenance\nServices', Icons.check_circle),
+              _buildDashboardItemButton('Maintenance\nSchedule', Icons.computer),
             ],
           ),
         ],
@@ -822,16 +822,38 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            /*decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5), // Shadow color
-                  spreadRadius: 5, // Spread radius
-                  blurRadius: 7, // Blur radius
-                  offset: Offset(0, 3), // Offset in the vertical direction
-                ),
-              ],
-            ),*/
+            child: Icon(
+              icon,
+              color: Colors.white,
+            ),
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 10.0,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavBarReportItem(IconData icon, String label, int index) {
+    return GestureDetector(
+      onTap: () {
+        if (index == 2) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ReportPage()),
+          );
+        }
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Container(
             child: Icon(
               icon,
               color: Colors.white,
