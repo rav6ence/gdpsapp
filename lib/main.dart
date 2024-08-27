@@ -585,7 +585,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildDailyChecklistButton(String label, IconData icon, BuildContext context) {
     return InkWell(
       onTap: () {
-        if (label == 'Daily Checklist') {
+        if (label == 'Daily\nChecklist') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => DailyChecklistScreen()),
@@ -625,7 +625,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildApprovalButton(String title, IconData icon, BuildContext context) {
     return InkWell(
       onTap: () {
-        if (title == 'Approval') {
+        if (title == 'Approval\n') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ApprovalPage()),
@@ -664,7 +664,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildMCPButton(String title, IconData icon, BuildContext context) {
     return InkWell(
       onTap: () {
-        if (title == 'MCP') {
+        if (title == 'MCP\n') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => MCPReport()),
@@ -703,7 +703,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildPWCCButton(String title, IconData icon, BuildContext context) {
     return InkWell(
       onTap: () {
-        if (title == 'PWCC') {
+        if (title == 'PWCC\n') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => PWCCScreen()),

@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'dailychecklistdetail2.dart';
+
 import 'dailychecklistvp.dart';
 import 'package:flutter/material.dart';
 
@@ -95,11 +97,11 @@ class DailyChecklistPage extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    checklistItem('Shift 1 (06:00 - 08:00)', '1/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
-                    checklistItem('Shift 1 (09:00 - 12:00)', '2/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
-                    checklistItem('Shift 1 (13:00 - 15:00)', '3/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
-                    checklistItem('Shift 1 (06:00 - 08:00)', '4/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
-                    checklistItem('Shift 1 (06:00 - 08:00)', '5/5', 'Tanggal', 'Pending', Color(0xffFBA14F)),
+                    checklistItem(context, 'Shift 1 (06:00 - 08:00)', '1/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
+                    checklistItem(context, 'Shift 1 (09:00 - 12:00)', '2/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
+                    checklistItem(context, 'Shift 1 (13:00 - 15:00)', '3/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
+                    checklistItem(context, 'Shift 1 (06:00 - 08:00)', '4/5', 'Tanggal', 'Done', Color(0xffA3E89C)),
+                    checklistItem(context, 'Shift 1 (06:00 - 08:00)', '5/5', 'Tanggal', 'Pending', Color(0xffFBA14F)),
                   ],
                 ),
               ),
@@ -153,15 +155,15 @@ class DailyChecklistPage extends StatelessWidget {
     );
   }
 
-  Widget checklistItem(String shift, String session, String tanggal, String status, Color statusColor) {
+  Widget checklistItem(BuildContext context, String shift, String session, String tanggal, String status, Color statusColor) {
     return InkWell(
-      /*onTap: () {
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) =>
-              DailyChecklistPage()),
+              DailyChecklist2Screen()),
         );
-      },*/
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 12),
         padding: EdgeInsets.only(top: 8, bottom: 10, left: 20, right: 16),
